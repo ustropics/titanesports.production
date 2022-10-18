@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      #slider {
+        width: 299px;
+        height: 115px;
+      }
+      .slide {
+        width: 299px;
+        height: 115px;
+        display: none;
+      }
+      .show {
+        display: block;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="slider">
+      <div class="slide" style="display: block">
+        <img src="img/gladiator_text.png" width="100%" />
+      </div>
+      <div class="slide">
+        <div id="slide-2">
+          <img src="img/shoutcaster_gladiator_steffu.png" width="100%" />
+        </div>
+      </div>
+      <div class="slide">
+        <div id="slide-3">
+          <img src="img/shoutcaster_gladiator_lukin.png" width="100%" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function next() {
+        var current = $("#slider .slide:visible");
+        current.hide();
+        var next = current.next(".slide").fadeIn(1000);
+        if (next.length == 0) next = current.siblings().filter(":first");
+        console.log(next);
+        next.show();
+      }
+
+      setInterval(next, 10 * 1000);
+    </script>
+  </body>
+</html>

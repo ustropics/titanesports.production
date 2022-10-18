@@ -1,0 +1,102 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<link href="http://fonts.cdnfonts.com/css/american-captain" rel="stylesheet">
+
+
+<script>
+    var tenMinutes = 600;
+
+
+function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        minutes,
+        seconds;
+    function timer() {
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds; 
+
+        if (diff <= 0) {
+            start = Date.now() + 1000;
+        }
+    };
+    timer();
+    setInterval(timer, 1000);
+}
+
+window.onload = function () {
+    display = document.querySelector('#time');
+    startTimer(tenMinutes, display);
+};
+
+setTimeout(
+    function(){
+    
+    $('#div_container').replaceWith($('#div_transition'));
+    $('#div_transition').fadeIn(2000).show();
+     
+   },
+   tenMinutes*1000
+);
+</script>
+
+<style>
+#div_container {
+	width: 400px;
+	height: 100px;
+	text-align: center;
+}
+
+#time {
+    font-family: 'American Captain', sans-serif;
+    font-size: 90px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#f6f6f6, #e2e2e2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#text {
+    font-family: 'American Captain', sans-serif;
+    font-size: 45px;
+    background: -webkit-linear-gradient(#f6f6f6, #e2e2e2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#text2 {
+    font-family: 'American Captain', sans-serif;
+    font-size: 28px;
+    background: -webkit-linear-gradient(#f6f6f6, #e2e2e2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#div_transition {
+	width: 138px;
+	height: 64px;
+}
+</style>
+
+</head>
+<body>
+<div id="div_container">
+<div><span id="text">NEXT GAME</span></div>
+<div><span id="text2">COMING UP</span></div>
+<div><span id="time"></span><div>
+</div>
+
+<div id="div_transition" style="display:none;">
+</div> 
+</body>
+</html>

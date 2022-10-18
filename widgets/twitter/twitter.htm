@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    </head>
+
+    <style>
+        #twitter_container {
+            width: 508px;
+            height: 1080px;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .twitter li {
+            color: white;
+        }
+
+        .twitter li a { 
+            color: #428bca;
+        }
+        #slider {
+            width: 508px;
+            height: 1080px;
+        }
+        .slide {
+            width: 508px;
+            height: 1080px;
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display:none;
+        }
+    </style>
+
+    <body>
+
+        <div id="slider">
+            <div class="slide" style="display: block;">
+            </div>
+
+             <div class="slide">
+                <div id="twitter_container">
+                    <a class="twitter-timeline"  data-dnt="true" data-theme="dark" data-link-color="#000"  href="https://twitter.com/TitanEsportz?ref_src=twsrc%5Etfw">Tweets by USTropics</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+            <div class="slide"></div>
+            
+            <div class="slide">
+                <div id="twitter_container">
+                    <a class="twitter-timeline"  data-dnt="true" data-theme="dark" data-link-color="#000"  href="https://twitter.com/TitanEsportz?ref_src=twsrc%5Etfw">Tweets by USTropics</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+         </div>
+
+         <script>
+            function next() {
+                var current = $("#slider .slide:visible");
+                current.hide();
+                var next = current.next(".slide").fadeIn(4000);
+                if(next.length == 0)
+                    next = current.siblings().filter(":first")
+                console.log(next);
+                next.show();
+            }
+            
+            setInterval(next, 20*1000);
+            </script>
+
+    </body>
+
+</html>
